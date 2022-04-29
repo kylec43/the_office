@@ -1,0 +1,13 @@
+:root {
+    --theme-color1: rgb(60, 60, 60);
+    --theme-color2: #112D4E;
+    --theme-color3: #3F72AF;
+    --theme-color4: #DBE2EF;
+    --theme-color5: #F9F7F7;
+    --theme-color3-hover: #366298;
+
+}
+
+body {
+    background-color: var(--theme-color5);
+}

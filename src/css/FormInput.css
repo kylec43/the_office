@@ -1,0 +1,10 @@
+.input-label {
+    color: lightgray;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: var(--theme-color4);
+    box-shadow: inset 0 1px 1px var(--theme-color4), 0 0 4px var(--theme-color4);
+}
