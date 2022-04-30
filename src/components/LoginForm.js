@@ -5,10 +5,10 @@ import AuthInput from './AuthInput';
 import Button from './Button';
 
 
-function LoginForm({ title = "", titleStyle, emailValue, onChangeEmail, passwordValue, onChangePassword }) {
+function LoginForm({ title = "", onSubmit, cardStyle, titleStyle, emailValue, onChangeEmail, passwordValue, onChangePassword }) {
 
     return (
-        <Card>
+        <Card style={cardStyle}>
             <h3 className="form-title" style={titleStyle}>{title}</h3>
             <AuthInput
                 emailValue={emailValue}
@@ -18,6 +18,7 @@ function LoginForm({ title = "", titleStyle, emailValue, onChangeEmail, password
             />
             <Button
                 title="Login"
+                onPress={onSubmit}
             />
         </Card>
     );
