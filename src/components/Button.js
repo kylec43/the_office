@@ -1,11 +1,11 @@
 import React from 'react';
 import '../css/Button.css';
 
-function Button({ title, style, onPress }) {
+function Button({ title, style, className = "", onPress }) {
 
     return (
         <button 
-            className="btn-primary button-style" 
+            className={`btn-primary button-style ${className}`} 
             style={style}
             onClick={onPress}
         >

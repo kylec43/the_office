@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../css/AuthPage.css';
 import Card from '../components/Card';
 import AuthInput from '../components/AuthInput';
 import Button from '../components/Button';
-import { login } from '../api/officeApi';
-import '../css/AuthPage.css';
+import { signup } from '../api/officeApi';
 
-function LoginPage() {
+function SignupPage() {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ function LoginPage() {
     return (
         <>
             <Card style={styles.cardStyle}>
-                <h3 className="form-title">Employee Login</h3>
+                <h3 className="form-title">Employee Signup</h3>
                 <AuthInput
                     emailValue={email}
                     passwordValue={password}
@@ -23,10 +23,10 @@ function LoginPage() {
                     onChangePassword={setPassword}
                 />
                 <Button
-                    title="Log In"
+                    title="Sign Up"
                     onPress={() => {
 
-                        login(email, password).then(result => {
+                        signup().then(result => {
                             alert(result);
                             navigate("/home");
                         }).catch(e => {
@@ -35,9 +35,9 @@ function LoginPage() {
                     }}
                 />
                 <Button
-                    title="New User? Sign Up!"
+                    title="Already have an account? Log In!"
                     className="auth-page-button-style"
-                    onPress={() => navigate("/signup")}
+                    onPress={() => navigate("/login")}
                 />
             </Card>
             <h3>{email}</h3>
@@ -50,10 +50,7 @@ const styles = {
     cardStyle: {
         margin: "50px auto 0px",
         padding: "32px 32px 40px"
-    },
-    signupButton: {
-        backgroundColor: "green"
     }
 }
 
-export default LoginPage;
+export default SignupPage;
