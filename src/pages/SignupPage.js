@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/AuthPage.css';
 import Card from '../components/Card';
-import AuthInput from '../components/AuthInput';
+import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import { signup } from '../api/officeApi';
 
@@ -11,22 +11,38 @@ function SignupPage() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     return (
         <>
             <Card style={styles.cardStyle}>
                 <h3 className="form-title">Employee Signup</h3>
-                <AuthInput
-                    emailValue={email}
-                    passwordValue={password}
-                    onChangeEmail={setEmail}
-                    onChangePassword={setPassword}
+                <FormInput
+                    id="emailInput"
+                    type="email"
+                    label="Email:"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <FormInput
+                    id="passwordInput"
+                    type="password"
+                    label="Password:"
+                    value={password}
+                    onChangeText={setPassword}
+                />
+                <FormInput
+                    id="confirmPasswordInput"
+                    type="password"
+                    label="Confirm Password:"
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
                 />
                 <Button
                     title="Sign Up"
                     onPress={() => {
 
-                        signup().then(result => {
+                        signup(email, password, confirmPassword).then(result => {
                             alert(result);
                             navigate("/home");
                         }).catch(e => {

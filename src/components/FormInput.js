@@ -5,11 +5,12 @@ function FormInput({ id, type = "text", label = "", placeholder = "", value, onC
     
     return (
         <div className="mb-3" style={containerStyle}>
-            <label className="form-label input-label" for={id} style={labelStyle}>{label}</label>
+            <label className="form-label input-label" htmlFor={id} style={labelStyle}>{label}</label>
             <input 
                 type={type} 
                 className="form-control form-input" 
-                id={id} 
+                id={id}
+                name={id}
                 placeholder={placeholder} 
                 value={value}
                 onChange={e => onChangeText(e.target.value)}

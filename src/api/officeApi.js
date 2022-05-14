@@ -12,7 +12,7 @@ function login(email, password) {
 
             const response = await officeApi.post("/login", {
                 email,
-                password
+                password,
             });
     
             resolve(JSON.stringify(response.data));
@@ -23,20 +23,20 @@ function login(email, password) {
 }
 
 
-function signup(email, password) {
+function signup(email, password, confirmPassword) {
 
     return new Promise(async (resolve, reject) => {
 
-        const params = new URLSearchParams();
-        params.append("email", email);
-        params.append("password", password);
-
         try {
-            const response = await officeApi.post("/signup", params);
+            const response = await officeApi.post("/signup", {
+                email,
+                password,
+                confirmPassword
+            });
     
-            resolve(response.data);
+            resolve(JSON.stringify(response.data));
         } catch (e) {
-            reject(e);
+            reject(e.response.data || e);
         }
     });
 }

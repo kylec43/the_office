@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card';
-import AuthInput from '../components/AuthInput';
+import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import { login } from '../api/officeApi';
 import '../css/AuthPage.css';
@@ -16,11 +16,19 @@ function LoginPage() {
         <>
             <Card style={styles.cardStyle}>
                 <h3 className="form-title">Employee Login</h3>
-                <AuthInput
-                    emailValue={email}
-                    passwordValue={password}
-                    onChangeEmail={setEmail}
-                    onChangePassword={setPassword}
+                <FormInput
+                    id="emailInput"
+                    type="email"
+                    label="Email:"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <FormInput
+                    id="passwordInput"
+                    type="password"
+                    label="Password:"
+                    value={password}
+                    onChangeText={setPassword}
                 />
                 <Button
                     title="Log In"
